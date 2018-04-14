@@ -46,8 +46,9 @@
           </div> -->
 
           <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" name="email" placeholder="Enter email">
+              <label>Email address</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+              <div id="availability"> </div>
           </div>
 
           <div class="form-group">
@@ -97,13 +98,13 @@
     <script type="text/javascript">
   $(document).ready(function() {
     // body...
-    $("#username").blur(function(){
+    $("#email").blur(function(){
       console.log("here");
-      var username = $(this).val();
+      var email_val = $(this).val();
       $.ajax({
         url:"../php/check.php",
         method:"POST",
-        data: {user_name:username},
+        data: {email:email_val},
         dataType:"text",
         success:function(html){
           $("#availability").html(html);
