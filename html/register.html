@@ -124,7 +124,7 @@
 
     $("#email").blur(function(){
         $("#emailInfo").remove();
-        $("#availability").remove();
+
 
         if($("#email").val().length > 0)
         {
@@ -136,6 +136,7 @@
           }
           else
           {
+            $("#availability").remove();
             $("#email").after("<div id = 'emailError'> Not a valid Email! </div>");
           }
         }
