@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2018 at 12:28 AM
+-- Generation Time: Apr 15, 2018 at 03:19 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -53,6 +53,13 @@ CREATE TABLE `user` (
   `zipcode` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`email_id`, `firstname`, `lastname`, `phone_no`, `street`, `city`, `state`, `country`, `rating`, `isAdmin`, `zipcode`) VALUES
+('shivani95thakkar@gmail.com', 'Shivani', 'Thakkar', '4697336827', '7815 McCallum Blvd', 'Dallas', 'Texas', 'United States', 0, 1, '75252');
+
 -- --------------------------------------------------------
 
 --
@@ -66,7 +73,7 @@ CREATE TABLE `utility` (
   `isAvailable` tinyint(1) DEFAULT NULL,
   `email_id` varchar(30) DEFAULT NULL,
   `city` varchar(30) DEFAULT NULL,
-  `street` varchar(3) DEFAULT NULL,
+  `street` varchar(30) DEFAULT NULL,
   `state` varchar(30) DEFAULT NULL,
   `country` varchar(30) DEFAULT NULL,
   `rating` int(11) DEFAULT NULL,
@@ -74,6 +81,13 @@ CREATE TABLE `utility` (
   `post_date` date DEFAULT NULL,
   `description` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `utility`
+--
+
+INSERT INTO `utility` (`utility_id`, `name`, `category_id`, `isAvailable`, `email_id`, `city`, `street`, `state`, `country`, `rating`, `price`, `post_date`, `description`) VALUES
+('1', 'Wrist watch', 1, 1, 'shivani95thakkar@gmail.com', 'Dallas', '7815 McCallum Blvd ', 'Texas', 'United States', 0, 200, '2018-04-14', 'Man\'s watch');
 
 -- --------------------------------------------------------
 
@@ -86,6 +100,13 @@ CREATE TABLE `utility_category` (
   `name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `utility_category`
+--
+
+INSERT INTO `utility_category` (`category_id`, `name`) VALUES
+(1, 'For Sale');
+
 -- --------------------------------------------------------
 
 --
@@ -96,6 +117,13 @@ CREATE TABLE `utility_image` (
   `utility_id` varchar(30) NOT NULL,
   `image_path` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `utility_image`
+--
+
+INSERT INTO `utility_image` (`utility_id`, `image_path`) VALUES
+('1', 'product-images/watch.jpg');
 
 -- --------------------------------------------------------
 
