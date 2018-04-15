@@ -119,7 +119,7 @@
   {
     $("#email").focus(function(){
       $("#emailError").remove();
-      $("#email").after("<span id = 'emailInfo'>Enter Email!</span>");
+      // $("#email").after("<span id = 'emailInfo'>Enter Email!</span>");
     });
 
     $("#email").blur(function(){
@@ -136,7 +136,6 @@
           }
           else
           {
-            $("#availability").remove();
             $("#email").after("<div id = 'emailError'> Not a valid Email! </div>");
           }
         }
