@@ -22,7 +22,7 @@
 		}
 		else
 		{
-			echo "<div >Available  :)</div>";
+			echo "<div>Available  :)</div>";
 		}
 	}
 ?>
