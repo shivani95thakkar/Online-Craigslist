@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$email = $_POST['email'];
 	$phone = $_POST['phone'];
 	$address1 = $_POST['address1'];
-	$address2 = $_POST['address2'];
+	//$address2 = $_POST['address2'];
 	$city = $_POST['city'];
 	$state = $_POST['state'];
 	$zipcode = $_POST['zipcode'];
