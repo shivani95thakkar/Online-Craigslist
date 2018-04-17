@@ -26,10 +26,10 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Product Catalog <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="../html/homepage.php">Product Catalog <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../php/mywishlist.php">My Wishlist</a>
+            <a class="nav-link" href="#">My Wishlist</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Add Product</a>
@@ -46,9 +46,8 @@
     	echo '<h1>hello '.$_SESSION['email_id'].'</h1>';
     ?>
 
-
-    <?php 
-      include("../php/product-catalog.php");
-    ?>
+<h2> This is my wishlist </h2>
 </body>
 </html>
+
+

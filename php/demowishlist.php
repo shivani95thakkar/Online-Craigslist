@@ -100,6 +100,7 @@ if(isset($_SESSION["wish_list_item"])){
 ?>
 </div>
 
+<h1>here</h1>
 
 <div id="product-grid">
 	<div class="txt-heading">Utilities</div>
