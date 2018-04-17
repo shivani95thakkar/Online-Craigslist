@@ -47,7 +47,7 @@
 
           <div class="form-group">
               <label>Email address</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required="required">
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
               <div id="availability"> </div>
           </div>
 
@@ -121,11 +121,12 @@ $(document).ready(function()
   {
       $("#email").focus(function(){
         $("#emailError").remove();
+        $("#emailNullError").remove();
         // $("#email").after("<span id = 'emailInfo'>Enter Email!</span>");
       });
 
       $("#email").blur(function(){
-          $("#emailInfo").remove();
+          //$("#emailInfo").remove();
 
 
           if($("#email").val().length > 0)
@@ -135,20 +136,52 @@ $(document).ready(function()
             if (characters.test(charactersentered)) 
             {
               $("#availability").show();
+              $("#emailNullError").remove();
+              // var testing = TRUE;
+              // var available = $("#available").val();
+              // if((testing).test(available))
+              // {
+              //       $('input[type!=submit]').click(function(){
+              //       // code to cancel changes
+              //       return false;
+              //   });
+              // }
+               $("#submit").prop('disabled', false);
+              // $('input[type=submit]').click(function(){
+              //   // code to cancel changes
+              //   return true;
+              // });
             }
             else
             {
-              $("#email").after("<div id = 'emailError'> Not a valid Email! </div>");
+              $("#email").after("<div id = 'emailError'> Not a valid Email ! </div>");
+              $("#submit").prop('disabled', true);
+                //   $('input[type=submit]').click(function(){
+                //   alert("Not a valid Email !")
+                //   // code to cancel changes
+                //   return false;
+                // });
               $("#availability").hide();
             }
           }
           else
           {
-            $("#email").after("<div id = 'emailError'> Please enter your Email! </div>");
+            $("#email").after("<div id = 'emailNullError'> Please enter your Email! </div>");
+            $("#submit").prop('disabled', true);
+              //   $('input[type=submit]').click(function(){
+              //   alert("Please enter your Email Id !")
+              //   // code to cancel changes
+              //   return false;
+              // });
           }
       });
 
-        $("#password").focus(function() {
+
+
+
+
+
+      $("#password").focus(function() {
             
             //$("#passworddone").remove();
             $("#passworderror").remove();
@@ -166,16 +199,30 @@ $(document).ready(function()
             var strength = 0;
             var passwordentered = $("#password").val();
 
-            if ($("#password").val().length < 8 && $("#password").val().length > 0) 
+            if (($("#password").val().length <= 8) && ($("#password").val().length > 0)) 
             {
-                $("#password").after("<span id = 'lengthLessEight'> Password length must be more than 8 </span>");
+                $("#password").after("<span id = 'lengthLessEight'> Password length must be more than 8 !</span>");
+                    //alert("Password length must be more than 8 !")
+                    $("#submit").prop('disabled', true);
+                    // $('input[type=submit]').click(function(){
+                    // alert("Password length must be more than 8 !")
+                    //   // code to cancel changes
+                    //   return false;
+                    // });
             }
+
             else if($("#password").val().length == 0)
             {
                 //$("#passworddone").remove();
                 $("#password").after("<span id= 'lengthZero'> Please enter the Password ! </span>");
                 $("#passworderror").remove(); 
                 $("#lengthLessEight").remove();
+                $("#submit").prop('disabled', true);
+                // $('input[type=submit]').click(function(){
+                //   alert("Please enter the Password !")
+                //   // code to cancel changes
+                //   return false;
+                // });
             }
             // else
             // {
@@ -183,6 +230,7 @@ $(document).ready(function()
             //     $("#lengthZero").remove();
             //     $("#lengthLessEight").remove();
             // }
+
             else
             {
                 console.log(strength, " here");
@@ -218,19 +266,195 @@ $(document).ready(function()
                     $("#password").after("<div id = 'strengthlesstwo'> Password is weak</div>");
                     $("#strengthequaltwo").remove(); 
                     $("#strengthgood").remove(); 
+                    $("#submit").prop('disabled', true);
+                    // $('input[type=submit]').click(function(){
+                       alert("Password is weak !")
+                    //   // code to cancel changes
+                    //   return false;
+                    // });
+
                     //return 'Weak'
                 } else if (strength == 2) {
                     $("#password").after("<div id = 'strengthequaltwo'> Password is Good</div>");
                     $("#strengthlesstwo").remove(); 
                     $("#strengthgood").remove(); 
+                    $("#submit").prop('disabled', false);
+                    // $('input[type=submit]').click(function(){
+                    //   // code to cancel changes
+                    //   return true;
+                    // });
                     //return 'Good'
                 } else {
                     $("#password").after("<div id = 'strengthgood'> Password is Strong</div>");
                     $("#strengthlesstwo").remove(); 
-                    $("#strengthequaltwo").remove(); 
+                    $("#strengthequaltwo").remove();
+                    $("#submit").prop('disabled', false);
+                    // $('input[type=submit]').click(function(){
+                    //   // code to cancel changes
+                    //   return true;
+                    // }); 
                     //return 'Strong'
                 }
             }
+
+        });
+
+
+
+      $("#firstname").focus(function(){
+
+        $("#firstnameerror").remove();
+        //$("#username").after("<span class = 'info' id = 'usernamemessage'> Enter Username </span>");
+
+        });
+
+        $("#firstname").blur(function(){
+
+          //$("#firstnamemessage").remove();
+
+          if($("#firstname").val().length == 0)
+          {
+            $("#firstname").after("<span id = 'firstnameerror'> Enter the first name ! </span>");
+          }
+
+      });
+
+
+
+
+        $("#lastname").focus(function(){
+
+        $("#lastnameerror").remove();
+        //$("#username").after("<span class = 'info' id = 'usernamemessage'> Enter Username </span>");
+
+        });
+
+        $("#lastname").blur(function(){
+
+          //$("#firstnamemessage").remove();
+
+          if($("#lastname").val().length == 0)
+          {
+            $("#lastname").after("<span id = 'lastnameerror'> Enter the Last name ! </span>");
+          }
+
+        });
+
+
+
+
+        $("#phone").focus(function(){
+
+        $("#phoneerror").remove();
+        //$("#username").after("<span class = 'info' id = 'usernamemessage'> Enter Username </span>");
+
+        });
+
+        $("#phone").blur(function(){
+
+          //$("#firstnamemessage").remove();
+
+          if($("#phone").val().length == 0)
+          {
+            $("#phone").after("<span id = 'phoneerror'> Enter the Phone Number ! </span>");
+          }
+
+        });
+
+
+        $("#address1").focus(function(){
+
+        $("#address1error").remove();
+        //$("#username").after("<span class = 'info' id = 'usernamemessage'> Enter Username </span>");
+
+        });
+
+        $("#address1").blur(function(){
+
+          //$("#firstnamemessage").remove();
+
+          if($("#address1").val().length == 0)
+          {
+            $("#address1").after("<span id = 'address1error'> Enter the Street Name ! </span>");
+          }
+
+        });
+
+
+        $("#city").focus(function(){
+
+        $("#cityerror").remove();
+        //$("#username").after("<span class = 'info' id = 'usernamemessage'> Enter Username </span>");
+
+        });
+
+        $("#city").blur(function(){
+
+          //$("#firstnamemessage").remove();
+
+          if($("#city").val().length == 0)
+          {
+            $("#city").after("<span id = 'cityerror'> Enter the City ! </span>");
+          }
+
+        });
+
+
+
+
+        $("#state").focus(function(){
+
+        $("#stateerror").remove();
+        //$("#username").after("<span class = 'info' id = 'usernamemessage'> Enter Username </span>");
+
+        });
+
+        $("#state").blur(function(){
+
+          //$("#firstnamemessage").remove();
+
+          if($("#state").val().length == 0)
+          {
+            $("#state").after("<span id = 'stateerror'> Enter the State ! </span>");
+          }
+
+        });
+
+
+        $("#zipcode").focus(function(){
+
+        $("#zipcodeerror").remove();
+        //$("#username").after("<span class = 'info' id = 'usernamemessage'> Enter Username </span>");
+
+        });
+
+        $("#zipcode").blur(function(){
+
+          //$("#firstnamemessage").remove();
+
+          if($("#zipcode").val().length == 0)
+          {
+            $("#zipcode").after("<span id = 'zipcodeerror'> Enter the Zip Code ! </span>");
+          }
+
+        });
+
+
+        $("#country").focus(function(){
+
+        $("#countryerror").remove();
+        //$("#username").after("<span class = 'info' id = 'usernamemessage'> Enter Username </span>");
+
+        });
+
+        $("#country").blur(function(){
+
+          //$("#firstnamemessage").remove();
+
+          if($("#country").val().length == 0)
+          {
+            $("#country").after("<span id = 'countryerror'> Enter the Country ! </span>");
+          }
 
         });
 
