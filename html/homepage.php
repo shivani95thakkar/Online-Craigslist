@@ -11,7 +11,7 @@
       $username = "root";
       $password = "root";
       $dbname = "craigslist";
-      $limit = 20;
+      $limit = 12;
 
       // Create connection
       $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -94,7 +94,7 @@
       $row["name"]; ?></strong></div>
       <div class="product-price"><?php echo "$".$row["price"]; ?></div>
       <div><input type="submit" value="Add to wishlist" class="btnAddAction" /></div>
-      <br>
+      
       </form>
     </div>
 <?php } ?>
@@ -117,11 +117,14 @@
   $total_records = $row[0];  
   $total_pages = ceil($total_records / $limit);  
 
-  $pagLink = "<div class='pagination'>";  
+  echo "<div margin-bottom>";
+  $pagLink = "<div class='pagination' style ='margin-bottom:20px; margin-left:100px'>";  
   for ($i=1; $i<=$total_pages; $i++) {  
-             $pagLink .= " "."<a href='../html/homepage.php?page=".$i."'>".$i."</a>"."&nbsp;";  
+             $pagLink .= " "."<a class='page-link' href='../html/homepage.php?page=".$i."'>".$i."</a>";  
   };  
   echo $pagLink . "</div>";  
+
+  echo "</div>"
 ?>
 
 
