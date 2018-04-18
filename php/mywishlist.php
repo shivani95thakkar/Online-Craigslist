@@ -11,6 +11,8 @@
 	    <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
+    <link href="../css/cart.css" type="text/css" rel="stylesheet" />
+    
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
 
     <!--Let browser know website is optimized for mobile-->
@@ -44,6 +46,51 @@
 
     <?php
     	echo '<h1>hello '.$_SESSION['email_id'].'</h1>';
+
+      $servername = "localhost";
+      $username = "root";
+      $password = "root";
+      $dbname = "craigslist";
+      // $limit = 12;
+
+      // Create connection
+      $conn = mysqli_connect($servername, $username, $password, $dbname);
+      
+      // Check connection
+      if (!$conn) {
+          die("Connection failed: " . mysqli_connect_error());
+      }
+
+      $select_wishlist_items = "SELECT * FROM wishlist;";
+      $items_set_id = mysqli_query($conn, $select_wishlist_items);
+
+      while ($item_id = mysqli_fetch_assoc($items_set_id)) {
+        # code...
+        // echo $item_id['utility_id']."<br>";
+
+        $get_img = "SELECT image_path FROM utility_image where utility_id=".$item_id['utility_id'].";";
+        $img_res =  mysqli_query($conn, $get_img);
+        $path = mysqli_fetch_assoc($img_res);
+
+        $get_info = "SELECT * FROM utility where utility_id=".$item_id['utility_id'].";";
+        $item_info = mysqli_query($conn, $get_info);
+        $item_details = mysqli_fetch_assoc($item_info);
+        ?>
+
+        <div class="product-item">
+          <form method="post" action="../php/manage-wishlist.php?action=add&utility_id=<?php echo $row["utility_id"]; ?>">
+            <div class="product-image"><img height="100" width="120" src="../php/<?php echo $path["image_path"]; ?>"></div>
+            <div><strong><?php echo 
+            $item_details["name"]; ?></strong></div>
+            <div class="product-price"><?php echo "$".$item_details["price"]; ?></div>
+            <!-- <div><input type="submit" value="Add to wishlist" class="btnAddAction" /></div> -->
+          
+          </form>
+        </div>
+
+        <?php
+
+      }
     ?>
 
 <h2> This is my wishlist </h2>

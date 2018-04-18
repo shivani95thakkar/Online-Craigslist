@@ -88,7 +88,7 @@
     // echo "</pre>";
 ?>
     <div class="product-item">
-      <form method="post" action="wishlist.php?action=add&utility_id=<?php echo $row["utility_id"]; ?>">
+      <form method="post" action="../php/manage-wishlist.php?action=add&utility_id=<?php echo $row["utility_id"]; ?>">
       <div class="product-image"><img height="100" width="120" src="../php/<?php echo $path["image_path"]; ?>"></div>
       <div><strong><?php echo 
       $row["name"]; ?></strong></div>
