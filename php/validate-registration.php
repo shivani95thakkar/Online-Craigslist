@@ -40,11 +40,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	if (mysqli_query($conn, $insert_user) and mysqli_query($conn, $insert_account)) {
 	    $message = "Registered! You may now login!";
-	    header("refresh:2;../html/login.html");
+	    header("refresh:0;../html/login.html");
 		echo "<script type='text/javascript'>alert('$message');</script>";
 		// header('Location: '. 'login.html');
 	} else {
-	    echo "Error: " ." ".$insert_account . "<br>" . mysqli_error($conn);
+	    // echo "Error: " ." ".$insert_account . "<br>" . mysqli_error($conn);
+	    $message = "Sorry, email has been taken!";
+	    header("refresh:0;../html/register.html");
+		echo "<script type='text/javascript'>alert('$message');</script>";
 	}
 }
 mysqli_close($conn);
