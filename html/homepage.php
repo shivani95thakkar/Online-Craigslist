@@ -58,15 +58,7 @@
         </ul>
       </div>
 
-     <!--  <div style="margin-right: 20px">
-        <span style="margin-right: 10px" color="red">Category: </span>
-        <select>
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="opel">Opel</option>
-          <option value="audi">Audi</option>
-        </select>
-      </div> -->
+
 
 
 <form class="form-inline my-2 my-lg-0" >
@@ -108,6 +100,10 @@
     ?>
 
 
+
+
+
+
   <div id="product-grid"><!-- 
   <div class="txt-heading">Utilities</div> -->
   <?php
@@ -133,8 +129,8 @@
     <div class="product-item">
       <form method="post" action="../php/manage-wishlist.php?action=add&utility_id=<?php echo $row["utility_id"]; ?>">
       <div class="product-image"><img height="100" width="120" src="../php/<?php echo $path["image_path"]; ?>"></div>
-      <div><strong><?php echo 
-      $row["name"]; ?></strong></div>
+      <div><strong><a href="../php/view-product-details.php?utility_id=<?php echo $row["utility_id"]; ?>"> <?php echo $row["name"]; ?> </a></strong></div>
+      
       <div class="product-price"><?php echo "$".$row["price"]; ?></div>
       <div><input type="submit" value="Add to wishlist" class="btnAddAction" /></div>
       
@@ -145,6 +141,11 @@
 
 
 </div>
+
+
+
+
+
 
 <?php  
   $sql = "SELECT COUNT(*) FROM utility;";  
