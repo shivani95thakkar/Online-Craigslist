@@ -27,11 +27,11 @@
 
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="../html/homepage.php">Product Catalog <span class="sr-only">(current)</span></a>
-          </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">My Wishlist</a>
+            <a class="nav-link" href="../html/homepage.php">Product Catalog </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">My Wishlist <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Add Product</a>
@@ -42,6 +42,9 @@
         </ul>
       </div>
     </nav>
+
+
+    
 
 
     <?php
@@ -78,12 +81,12 @@
         ?>
 
         <div class="product-item">
-          <form method="post" action="../php/manage-wishlist.php?action=add&utility_id=<?php echo $row["utility_id"]; ?>">
+          <form method="post" action="../php/manage-wishlist.php?action=remove&utility_id=<?php echo $item_details["utility_id"]; ?>">
             <div class="product-image"><img height="100" width="120" src="../php/<?php echo $path["image_path"]; ?>"></div>
             <div><strong><?php echo 
             $item_details["name"]; ?></strong></div>
             <div class="product-price"><?php echo "$".$item_details["price"]; ?></div>
-            <!-- <div><input type="submit" value="Add to wishlist" class="btnAddAction" /></div> -->
+            <div><input type="submit" value="Remove from wishlist" class="btnAddAction" /></div>
           
           </form>
         </div>
@@ -93,7 +96,7 @@
       }
     ?>
 
-<h2> This is my wishlist </h2>
+<!-- <h2> This is my wishlist </h2> -->
 </body>
 </html>
 

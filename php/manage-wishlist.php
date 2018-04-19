@@ -23,37 +23,61 @@
 
 	if (!empty($_GET["action"])){
 	  // echo "method:".$_SERVER['REQUEST_METHOD'];
-		echo "this will manage wishlist";
+		// echo "this will manage wishlist";
 		$email_id = $_SESSION['email_id'];
 		$utility_id = $_GET['utility_id'];
-		echo "<br>user: ".$email_id;
-		echo "<br>utility id: ".$utility_id;
+		// echo "<br>user: ".$email_id;
+		// echo "<br>utility id: ".$utility_id;
 
 		switch ($_GET["action"]) {
 			case 'add':
 				# code...
-				echo "we will add to the cart";
+				// echo "we will add to the cart";
 
 				// check if item already exists
 
 				$insert_query = "INSERT INTO wishlist (email_id, utility_id) VALUES ('".$email_id."', '".$utility_id."');";
+
 				if(mysqli_query($conn, $insert_query))
 				{
 					//echo "item added to the cart";
 					$message = "item added to the cart";
 					echo "<script type='text/javascript'>alert('$message');</script>";
-					header("Location: ../html/homepage.php");
-					//exit();
+					// header("Location: ../html/homepage.php");
+					header("refresh:0;../html/homepage.php");
+					exit();
 				}
 				else
 				{
-					echo "error";
+					$message = "item already added to the cart";
+					echo "<script type='text/javascript'>alert('$message');</script>";
+					// header("Location: ../html/homepage.php");
+					header("refresh:0;../html/homepage.php");
+					exit();
 				}
 				break;
 
 			case 'remove':
 				# code...
-				echo "we will remove from the cart";
+				// echo "we will remove from the cart";
+
+				$remove_query = "DELETE FROM wishlist WHERE utility_id = '".$utility_id."';";
+				// echo "$remove_query";
+
+				if(mysqli_query($conn, $remove_query))
+				{
+					//echo "item added to the cart";
+					$message = "item removed from the cart";
+					echo "<script type='text/javascript'>alert('$message');</script>";
+					// header("Location: ../html/homepage.php");
+					header("Location: ../php/mywishlist.php");
+					exit();
+				}
+				else
+				{
+					echo "error";
+				}
+
 				break;
 
 			case 'empty':

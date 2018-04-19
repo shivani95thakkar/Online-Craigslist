@@ -61,7 +61,7 @@ if(!empty($_GET["action"])) {
 </HEAD>
 <BODY>
 <div id="shopping-cart">
-<div class="txt-heading">Wish List <a id="btnEmpty" href="wishlist.php?action=empty">Empty Wish List</a></div>
+<div class="txt-heading">Wish List <a id="btnEmpty" href="demowishlist.php?action=empty">Empty Wish List</a></div>
 <?php
 if(isset($_SESSION["wish_list_item"])){
     $item_total = 0;
@@ -83,7 +83,7 @@ if(isset($_SESSION["wish_list_item"])){
 				<td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["utility_id"]; ?></td>
 				<!-- <td style="text-align:right;border-bottom:#F0F0F0 1px solid;"><?php //echo $item["quantity"]; ?></td> -->
 				<td style="text-align:right;border-bottom:#F0F0F0 1px solid;"><?php echo "$".$item["price"]; ?></td>
-				<td style="text-align:center;border-bottom:#F0F0F0 1px solid;"><a href="wishlist.php?action=remove&utility_id=<?php echo $item["utility_id"]; ?>" class="btnRemoveAction">Remove Item</a></td>
+				<td style="text-align:center;border-bottom:#F0F0F0 1px solid;"><a href="demowishlist.php?action=remove&utility_id=<?php echo $item["utility_id"]; ?>" class="btnRemoveAction">Remove Item</a></td>
 				</tr>
 				<?php
         $item_total = ($item["price"]);
@@ -117,7 +117,7 @@ if(isset($_SESSION["wish_list_item"])){
 		// echo '</pre>';
 		?>
 		 <div class="product-item">
-			<form method="post" action="wishlist.php?action=add&utility_id=<?php echo $utility_array[$key]['utility_id']; ?>">
+			<form method="post" action="demowishlist.php?action=add&utility_id=<?php echo $utility_array[$key]['utility_id']; ?>">
 			<div class="product-image"><img height="100" width="120" src="<?php echo $utility_image_array[0]['image_path']; ?>"></div>
 			<div><strong><?php echo 
 			$utility_array[$key]["name"]; ?></strong></div>

@@ -57,6 +57,49 @@
           </li>
         </ul>
       </div>
+
+     <!--  <div style="margin-right: 20px">
+        <span style="margin-right: 10px" color="red">Category: </span>
+        <select>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+        </select>
+      </div> -->
+
+
+<form class="form-inline my-2 my-lg-0" >
+
+      <div style="margin-right: 10px">
+      <select class="custom-select">
+            <option selected="">All</option>
+
+            <?php 
+
+                $select_all_category = "SELECT * FROM utility_category;";
+
+                $result = mysqli_query($conn, $select_all_category);
+
+
+                while($row = mysqli_fetch_assoc($result)){
+                  echo "<option value='".$row["category_id"]."'>".$row["name"]."</option>";
+                }
+
+            ?>
+            <!-- <option value='1'>One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option> -->
+
+
+          </select>
+      </div>
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+
+
+    </form>
+
     </nav>
 
 
