@@ -58,8 +58,9 @@
 		echo "$state"."<br>";
 		echo "$country"."<br>";
 
-		$insert_utility = "";
-		$insert_image = "";
+		$insert_utility = "INSERT INTO UTILITY (name, category_id, isAvailable, email_id, city, street, state, country, price, description) 
+							VALUES ('$name','$category_id', '$isAvailable', '$email_id', '$city', '$street', '$state', '$country', '$price', '$description');";
+		// $insert_image = "INSERT INTO UTILITY_IMAGE (image_path) VALUES ('');";
 
 
 		if(isset($image_name) )
@@ -68,7 +69,7 @@
 
 			    if(!empty($image_name) )
 		    	{
-		         $location="C:/xampp/htdocs/mycraigslist/php/product-images/".$email_id."/";
+		         $location="../php/product-images/".$email_id."/";
 		         // $location1="C:/wampserver/www/OnlinePhotographyContest/Gallery/";
 		         if(!file_exists($location)){
 		             mkdir($location,0777,true);
@@ -76,9 +77,24 @@
 		          }
 				  if(move_uploaded_file($tmp_name1,$location.$image_name))// && copy($location.$name1,$location1.$name1))
 				    {
+				    	$complete_path = $location.$image_name;
+						$insert_image = "INSERT INTO UTILITY_IMAGE (image_path) VALUES ('$complete_path');";
+				    	if (mysqli_query($conn, $insert_utility) and mysqli_query($conn, $insert_image)){
 
-		            echo "<script>alert('Image Uploaded')</script>";
-		            header("refresh:0;url=../html/myproducts.php");
+				    		
+				    		$message = "Item Added";
+				    		echo "Redirecting to my products page";
+						    // header("refresh:0;../html/login.html");
+							echo "<script type='text/javascript'>alert('$message');</script>";
+							header("refresh:0;url=../html/myproducts.php");
+				    	}
+				    	else
+				    	{
+				    		echo "Error: " ." ".$insert_utility . "<br>" . mysqli_error($conn);
+				    	}
+
+		            // echo "<script>alert('Image Uploaded')</script>";
+		            // header("refresh:0;url=../html/myproducts.php");
 				
 				
 				    }
