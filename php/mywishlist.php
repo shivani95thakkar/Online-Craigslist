@@ -64,7 +64,7 @@
           die("Connection failed: " . mysqli_connect_error());
       }
 
-      $select_wishlist_items = "SELECT * FROM wishlist;";
+      $select_wishlist_items = "SELECT * FROM wishlist WHERE email_id='".$_SESSION['email_id']."';";
       $items_set_id = mysqli_query($conn, $select_wishlist_items);
 
       while ($item_id = mysqli_fetch_assoc($items_set_id)) {
