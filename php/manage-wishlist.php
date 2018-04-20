@@ -40,7 +40,7 @@
 
 				if(mysqli_query($conn, $insert_query))
 				{
-					//echo "item added to the cart";
+					echo "Adding to the cart";
 					$message = "item added to the cart";
 					echo "<script type='text/javascript'>alert('$message');</script>";
 					// header("Location: ../html/homepage.php");

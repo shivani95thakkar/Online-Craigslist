@@ -34,7 +34,7 @@
             <a class="nav-link" href="#">My Wishlist <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Add Product</a>
+            <a class="nav-link" href="../html/utility.php">Add Product</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../php/destroysession.php">Logout</a>
