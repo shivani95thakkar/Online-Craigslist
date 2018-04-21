@@ -44,7 +44,8 @@
 					$message = "item added to the cart";
 					echo "<script type='text/javascript'>alert('$message');</script>";
 					// header("Location: ../html/homepage.php");
-					header("refresh:0;../html/homepage.php");
+					header("refresh:0;../html/homepage.php?page=".$_GET['page']);
+					// echo "you came from page "
 					exit();
 				}
 				else

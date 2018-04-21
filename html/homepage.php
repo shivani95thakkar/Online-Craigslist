@@ -133,7 +133,7 @@
     // echo "</pre>";
 ?>
     <div class="product-item">
-      <form method="post" action="../php/manage-wishlist.php?action=add&utility_id=<?php echo $row["utility_id"]; ?>">
+      <form method="post" action="../php/manage-wishlist.php?action=add&page=<?php echo $page; ?>&utility_id=<?php echo $row["utility_id"]; ?>">
       <div class="product-image"><img height="100" width="120" src="<?php echo $path["image_path"]; ?>"></div>
       <div><strong><a href="../php/view-product-details.php?utility_id=<?php echo $row["utility_id"]; ?>"> <?php echo $row["name"]; ?> </a></strong></div>
       
