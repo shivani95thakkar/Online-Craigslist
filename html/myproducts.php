@@ -21,9 +21,6 @@
           die("Connection failed: " . mysqli_connect_error());
       }
 ?>
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,8 +67,16 @@
 
   	<?php
     	echo '<h1>hello '.$_SESSION['email_id'].'</h1>';
+?>
+
+<div id="product-grid">
+<?php
+
+  if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
+    $start_from = ($page-1) * $limit; 
+
    	
-   	$select_my_items = "SELECT * FROM utility WHERE is_deleted <> '1' AND email_id='".$_SESSION['email_id']."';";
+   	$select_my_items = "SELECT * FROM utility WHERE is_deleted <> '1' AND email_id='".$_SESSION['email_id']."' ORDER BY utility_id LIMIT $start_from, $limit;";
       $items_set_id = mysqli_query($conn, $select_my_items);
 
       while ($item_id = mysqli_fetch_assoc($items_set_id)) {
@@ -102,8 +107,31 @@
 
       }
     ?>
+</div>
 
+<?php  
+  $sql = "SELECT COUNT(*) FROM utility WHERE is_deleted <> '1' AND email_id='".$_SESSION['email_id']."';";  
+  $rs_result = mysqli_query($conn, $sql);  
+  
+  $row = mysqli_fetch_array($rs_result);  
+  // $row = $rs_result;
 
+  // echo "<pre>";
+  // print_r($row);
+  // echo "</pre>";
+
+  $total_records = $row[0];  
+  $total_pages = ceil($total_records / $limit);  
+
+  echo "<div margin-bottom>";
+  $pagLink = "<div class='pagination' style ='margin-bottom:20px; margin-left:100px'>";  
+  for ($i=1; $i<=$total_pages; $i++) {  
+             $pagLink .= " "."<a class='page-link' href='../html/myproducts.php?page=".$i."'>".$i."</a>";  
+  };  
+  echo $pagLink . "</div>";  
+
+  echo "</div>"
+?>
 
 </body>
 </html>

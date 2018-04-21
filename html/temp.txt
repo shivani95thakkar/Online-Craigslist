@@ -1,0 +1,71 @@
+temp
+
+
+
+
+  <div id="product-grid"><!-- 
+  <div class="txt-heading">Utilities</div> -->
+  <?php
+
+  if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
+    $start_from = ($page-1) * $limit; 
+
+
+  // $utility_array = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM utility ORDER BY utility_id LIMIT $start_from, $limit;"));
+  $utility_array = array();
+  $result = mysqli_query($conn, "SELECT * FROM utility WHERE is_deleted <> '1' ORDER BY utility_id LIMIT $start_from, $limit;");
+
+  while($row = mysqli_fetch_assoc($result)){
+    // array_push($utility_array, $row);
+    $img_res =  mysqli_query($conn, "SELECT image_path FROM utility_image where utility_id=".$row["utility_id"]);
+    $path = mysqli_fetch_assoc($img_res);
+
+    // echo "<pre>";
+    // print_r($row);
+    // print_r($path);
+    // echo "</pre>";
+?>
+    <div class="product-item">
+      <form method="post" action="../php/manage-wishlist.php?action=add&page=<?php echo $page; ?>&utility_id=<?php echo $row["utility_id"]; ?>">
+      <div class="product-image"><img height="100" width="120" src="<?php echo $path["image_path"]; ?>"></div>
+      <div><strong><a href="../php/view-product-details.php?utility_id=<?php echo $row["utility_id"]; ?>"> <?php echo $row["name"]; ?> </a></strong></div>
+      
+      <div class="product-price"><?php echo "$".$row["price"]; ?></div>
+      <div><input type="submit" value="Add to wishlist" class="btnAddAction" /></div>
+      
+      </form>
+    </div>
+<?php } ?>
+
+
+
+</div>
+
+
+
+
+
+
+<?php  
+  $sql = "SELECT COUNT(*) FROM utility WHERE is_deleted <> '1';";  
+  $rs_result = mysqli_query($conn, $sql);  
+  
+  $row = mysqli_fetch_array($rs_result);  
+  // $row = $rs_result;
+
+  // echo "<pre>";
+  // print_r($row);
+  // echo "</pre>";
+
+  $total_records = $row[0];  
+  $total_pages = ceil($total_records / $limit);  
+
+  echo "<div margin-bottom>";
+  $pagLink = "<div class='pagination' style ='margin-bottom:20px; margin-left:100px'>";  
+  for ($i=1; $i<=$total_pages; $i++) {  
+             $pagLink .= " "."<a class='page-link' href='../html/homepage.php?page=".$i."'>".$i."</a>";  
+  };  
+  echo $pagLink . "</div>";  
+
+  echo "</div>"
+?>
