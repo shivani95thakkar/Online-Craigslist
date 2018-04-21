@@ -30,7 +30,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
-    <link href="../css/cart.css" type="text/css" rel="stylesheet" />
+    <link href="../css/item.css" type="text/css" rel="stylesheet" />
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -53,6 +53,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../html/utility.php">Add Product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../html/myproducts.php">My Products</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../php/destroysession.php">Logout</a>

@@ -11,7 +11,7 @@
       $username = "root";
       $password = "root";
       $dbname = "craigslist";
-      $limit = 12;
+      $limit = 1;
 
       // Create connection
       $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -52,9 +52,15 @@
           <li class="nav-item">
             <a class="nav-link" href="../html/utility.php">Add Product</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="../html/myproducts.php">My Products</a>
+          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="../php/destroysession.php">Logout</a>
           </li>
+
         </ul>
       </div>
 
@@ -114,7 +120,7 @@
 
   // $utility_array = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM utility ORDER BY utility_id LIMIT $start_from, $limit;"));
   $utility_array = array();
-  $result = mysqli_query($conn, "SELECT * FROM utility ORDER BY utility_id LIMIT $start_from, $limit;");
+  $result = mysqli_query($conn, "SELECT * FROM utility WHERE is_deleted <> '1' ORDER BY utility_id LIMIT $start_from, $limit;");
 
   while($row = mysqli_fetch_assoc($result)){
     // array_push($utility_array, $row);
@@ -148,7 +154,7 @@
 
 
 <?php  
-  $sql = "SELECT COUNT(*) FROM utility;";  
+  $sql = "SELECT COUNT(*) FROM utility WHERE is_deleted <> '1';";  
   $rs_result = mysqli_query($conn, $sql);  
   
   $row = mysqli_fetch_array($rs_result);  

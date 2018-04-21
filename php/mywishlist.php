@@ -37,6 +37,9 @@
             <a class="nav-link" href="../html/utility.php">Add Product</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="../html/myproducts.php">My Products</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="../php/destroysession.php">Logout</a>
           </li>
         </ul>
@@ -49,7 +52,7 @@
 
     <?php
     	echo '<h1>hello '.$_SESSION['email_id'].'</h1>';
-
+      echo '<a href ="../php/send_mail.php"> Send Mail </a><br>';
       $servername = "localhost";
       $username = "root";
       $password = "root";
@@ -85,8 +88,18 @@
             <div class="product-image"><img height="100" width="120" src="../php/<?php echo $path["image_path"]; ?>"></div>
             <div><strong><?php echo 
             $item_details["name"]; ?></strong></div>
-            <div class="product-price"><?php echo "$".$item_details["price"]; ?></div>
+            
+            <div class="product-price">
+            <?php if($item_details['is_deleted'] == '1'){
+                      echo "Deleted";
+            }
+            else{
+              echo "$".$item_details["price"];
+            } ?>
+            </div>
             <div><input type="submit" value="Remove from wishlist" class="btnAddAction" /></div>
+
+            
           
           </form>
         </div>

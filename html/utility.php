@@ -59,6 +59,9 @@
             <a class="nav-link" href="#">Add Product <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="../html/myproducts.php">My Products</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="../php/destroysession.php">Logout</a>
           </li>
         </ul>
