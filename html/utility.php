@@ -82,7 +82,7 @@
 
           <div class="form-group">
               <label>Utility Name</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="Enter the Utility name you want to sell !">
+              <input type="text" class="form-control" id="name" name="name" placeholder="Enter the Utility name you want to sell !" required="required">
               <div id="availability"> </div>
           </div>
 
@@ -90,7 +90,7 @@
           <div class="form-group">
               <label>Image</label><br>
               <!-- <input type="text" class="form-control" id="name" name="name" placeholder="Enter the Utility name you want to sell !"> -->
-              <input type="file" id="image" name="image">
+              <input type="file" id="image" name="image" required="required">
           </div>
 
 
@@ -108,20 +108,20 @@
           
 
           <div class="form-group">
-              <label>Price</label>
-              <span><input type="text" class="form-control" name="price" placeholder="9.99" id="price" required="required">
+              <label>Price (In Dollar Currency)</label>
+              <span><input type="number" step="0.01" class="form-control" name="price" placeholder="9.99" id="price" required="required">
               </span>
           </div>
 
           <div class="form-group">
               <label>Description</label>
-              <span><input type="text" class="form-control" name="description" placeholder="Brief description..." id="description" required="required">
-              </span>
+              <textarea rows="4" cols="50" class="form-control" name="description" id="description" required="required">Brief description...
+              </textarea>
           </div>
 
           <div class="form-group">
               <label>Availability</label><br>
-              <input type="radio" name="isAvailable" value="1"> Available<br>
+              <input type="radio" name="isAvailable" value="1" checked="checked"> Available<br>
               <input type="radio" name="isAvailable" value="0"> Not Available<br>
           </div>
           
