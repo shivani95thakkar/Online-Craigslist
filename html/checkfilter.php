@@ -87,20 +87,65 @@
 
       <div style="margin-right: 10px">
       <select class="custom-select" name='category'>
-            <option selected="" value="all">All</option>
 
-            <?php 
+             <?php
 
-                $select_all_category = "SELECT * FROM utility_category;";
+                if(isset($_SESSION['category']) and $_SESSION['category']=='all'){
+                  ?>
+                  <option selected="<?php echo (isset($_SESSION['category']) and $_SESSION['category']=='all')?'selected':'false'; ?>" value="all">All</option>
+                  <?php
+                }
+                else{
+                  ?>
+                    <option value="all">All</option>
+                  <?php
 
-                $result = mysqli_query($conn, $select_all_category);
-
-
-                while($row = mysqli_fetch_assoc($result)){
-                  echo "<option value='".$row["category_id"]."'>".$row["name"]."</option>";
                 }
 
+                if(isset($_SESSION['category']) and $_SESSION['category']=='1'){
+                  ?>
+                  <option selected="<?php echo (isset($_SESSION['category']) and $_SESSION['category']=='1')?'selected':'false'; ?>" value="1">For Sale</option>
+                  <?php
+                }
+                else{
+                  ?>
+                    <option value="1">For Sale</option>
+                  <?php
+
+                }
+
+                if(isset($_SESSION['category']) and $_SESSION['category']=='2'){
+                  ?>
+                  <option selected="<?php echo (isset($_SESSION['category']) and $_SESSION['category']=='2')?'selected':'false'; ?>" value="2">Housing</option>
+                  <?php
+                }
+                else{
+                  ?>
+                    <option value="2">Housing</option>
+                  <?php
+
+                }
+
+
+
             ?>
+
+<!--             <?php 
+
+//                $select_all_category = "SELECT * FROM utility_category;";
+
+//                $result = mysqli_query($conn, $select_all_category);
+
+
+  //              while($row = mysqli_fetch_assoc($result)){
+    //              echo "<option value='".$row["category_id"]."'>".$row["name"]."</option>";
+     //           }
+
+            ?> -->
+
+            
+
+
             <!-- <option value='1'>One</option>
             <option value="2">Two</option>
             <option value="3">Three</option> -->
@@ -108,7 +153,7 @@
 
           </select>
       </div>
-      <input id="searchbar" class="form-control mr-sm-2" type="text" placeholder="Search" name='searchString'>
+      <input id="searchbar" class="form-control mr-sm-2" type="text" placeholder="Search" value="<?php echo (isset($_SESSION['searchString']))?trim($_SESSION['searchString'], '%'):''; ?>" name='searchString'>
       
       <input class="btn btn-secondary my-2 my-sm-0" type="button" value="Search" onclick="filter_result()">
 
@@ -118,14 +163,10 @@
     </nav>
 
 
-    <?php
-      echo '<h1>hello '.$_SESSION['email_id'].'</h1>';
-    ?>
+    
 
 
-<div id = "results">
-
-<div id="product-grid"><!-- 
+<!-- 
   <div class="txt-heading">Utilities</div> -->
   <?php
 
@@ -137,10 +178,25 @@
   else
     $category = 'all';
 
-  if(isset($_SESSION['searchString']))
+  if(isset($_SESSION['searchString']) and $_SESSION['searchString'] != "")
     $searchString = $_SESSION['searchString'];
   else
     $searchString = '%';
+
+?>
+
+<?php
+//      echo "Category: ".$category;
+//      echo "<br>Search String: ".$searchString;
+      echo '<h1>hello '.$_SESSION['email_id'].'</h1>';
+    ?>
+
+<div id = "results">
+
+<div id="product-grid">
+<?php
+
+
 
   if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
     $start_from = ($page-1) * $limit; 
@@ -218,23 +274,23 @@
 
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
       $document.ready(function(){
         <?php 
-            if(isset($_SESSION['category']))
-              $category = $_SESSION['category'];
-            else
-              $category = 'all';
+        //    if(isset($_SESSION['category']))
+             // $category = $_SESSION['category'];
+          //  else
+             // $category = 'all';
 
-            if(isset($_SESSION['searchString']))
-              $searchString = $_SESSION['searchString'];
-            else
-              $searchString = '';
+            //if(isset($_SESSION['searchString']))
+             // $searchString = $_SESSION['searchString'];
+           // else
+             // $searchString = '';
         ?>
             $("#searchbar").val($searchString);
         
       });
-    </script>
+    </script> -->
 
 
 </body>

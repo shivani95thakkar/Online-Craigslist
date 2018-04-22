@@ -2,6 +2,42 @@ temp
 
 
 
+         <option selected="<?php echo (isset($_SESSION['category']) and $_SESSION['category']=='all')?'selected':'false'; ?>" value="all">All</option>
+            <option selected="<?php echo (isset($_SESSION['category']) and $_SESSION['category']=='1')?'selected':'false'; ?>" value="1"> For Sale </option>
+            <option selected="<?php echo (isset($_SESSION['category']) and $_SESSION['category']=='2')?'selected':'false'; ?>" value="2"> Housing </option>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <div id="product-grid"><!-- 
   <div class="txt-heading">Utilities</div> -->

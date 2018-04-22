@@ -24,7 +24,7 @@
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-	echo "search and filter results";
+	//echo "search and filter results";
 
 	
 
@@ -33,17 +33,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 
-	if($searchString == "")
+	if($searchString == ""){
 		$searchString = '%';
-	else
+		$_SESSION['searchString'] = "";
+	}
+	else{
+
 		$searchString = '%'.$searchString.'%';
+		$_SESSION['searchString'] = $searchString;
+	}
 
 
-	echo "<br>Category: ".$category;
-	echo "<br>Search String: ".$searchString;
+	// echo "<br>Category: ".$category;
+	// echo "<br>Search String: ".$searchString;
 
 	$_SESSION['category'] = $category;
-	$_SESSION['searchString'] = $searchString;
+	// $_SESSION['searchString'] = $searchString;
 
 	if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
     $start_from = ($page-1) * $limit; 
@@ -60,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$sql = "SELECT COUNT(*) FROM utility WHERE is_deleted <> '1' AND category_id=".$category." AND name LIKE '%%$searchString%%';";
 	}
 
-	echo $query;
+	// echo $query;
 
 	$result = mysqli_query($conn, $query);
 
@@ -70,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	}
 	else
 	{
-		echo "<br>entire response<br>";
+		// echo "<br>entire response<br>";
 
 		while($row = mysqli_fetch_assoc($result)){
 
@@ -100,7 +105,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <?php  
   // $sql = "SELECT COUNT(*) FROM utility WHERE is_deleted <> '1';";  
-echo $sql;
+// echo $sql;
   $rs_result = mysqli_query($conn, $sql);  
   
   $row = mysqli_fetch_array($rs_result);  
@@ -111,7 +116,7 @@ echo $sql;
   // echo "</pre>";
 
   $total_records = $row[0];  
-  echo $total_records;
+  // echo $total_records;
   $total_pages = ceil($total_records / $limit);  
 
   echo "<div margin-bottom>";
