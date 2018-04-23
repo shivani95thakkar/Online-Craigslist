@@ -39,11 +39,13 @@
 		$description= $_POST['description'];
 
 
-		$getLastId = "SELECT utility_id FROM utility ORDER BY utility_id DESC LIMIT 1";
-		$result = mysqli_query($conn, $getLastId);
-		$row = mysqli_fetch_assoc($result);
-		$last = $row['utility_id'];
-		$next = 1 + (int)$last;
+		// $getLastId = "SELECT utility_id FROM utility ORDER BY utility_id DESC LIMIT 1";
+		// $getLastId = "SELECT LAST_INSERT_ID();";
+		// $result = mysqli_query($conn, $getLastId);
+		// $row = mysqli_fetch_assoc($result);
+		// $last = $result;//$row['utility_id'];
+		// $last = mysqli_insert_id();
+		$next = rand(5,10000);
 
 		$image_name=$next.$_FILES["image"]["name"];
 		$type1=$_FILES["image"]["type"];
@@ -53,24 +55,24 @@
 		// print_r($_POST);
 		// echo "</pre>";
 
-		echo "<br>";
-		echo "$email_id"."<br>";
-		echo "$name"."<br>";
-		echo "$category_id"."<br>";
-		echo "$price"."<br>";
-		echo "$description"."<br>";
-		echo "$isAvailable"."<br>";
-		echo "$street"."<br>";
-		echo "$city"."<br>";
-		echo "$state"."<br>";
-		echo "$country"."<br>";
+		// echo "<br>";
+		// echo "$email_id"."<br>";
+		// echo "$name"."<br>";
+		// echo "$category_id"."<br>";
+		// echo "$price"."<br>";
+		// echo "$description"."<br>";
+		// echo "$isAvailable"."<br>";
+		// echo "$street"."<br>";
+		// echo "$city"."<br>";
+		// echo "$state"."<br>";
+		// echo "$country"."<br>";
 
 		$insert_utility = "INSERT INTO UTILITY (name, category_id, isAvailable, email_id, city, street, state, country, price, description) 
 							VALUES ('$name','$category_id', '$isAvailable', '$email_id', '$city', '$street', '$state', '$country', '$price', '$description');";
 		// $insert_image = "INSERT INTO UTILITY_IMAGE (image_path) VALUES ('');";
 
 
-		if(isset($image_name) )
+		if(isset($image_name) and $image_name!="")
 		{
 		    if($type1=='image/jpeg' || $type1=='image/jpg' || $type1=='image/png'){
 
@@ -90,8 +92,8 @@
 
 				    		
 				    		$message = "Item Added";
-				    		// echo "Redirecting to my products page";
-						    // header("refresh:0;../html/login.html");
+				    		echo "Redirecting to my products page";
+						    
 							echo "<script type='text/javascript'>alert('$message');</script>";
 							header("refresh:0;url=../html/myproducts.php");
 				    	}
@@ -113,8 +115,7 @@
 		    }
 		    else{
 		        echo "<script>alert('Please select a file of jpeg type  ')</script>";
-		        header("refresh:0;url=../php/utility.php");
-		        // header("refresh:0;url=/OnlinePhotographyContest/uploader.php");
+		        header("refresh:0;url=../html/utility.php");
 		    }
 		}
 		else
@@ -124,8 +125,7 @@
 
 				    		
 				    		$message = "Item Added";
-				    		// echo "Redirecting to my products page";
-						    // header("refresh:0;../html/login.html");
+				    		echo "Redirecting to my products page";
 							echo "<script type='text/javascript'>alert('$message');</script>";
 							header("refresh:0;url=../html/myproducts.php");
 				    	}
@@ -133,7 +133,6 @@
 				    	{
 				    		echo "Error: " ." ".$insert_utility . "<br>" . mysqli_error($conn);
 				    	}
-	        // header("refresh:0;url=/OnlinePhotographyContest/uploader.php");
 		}
 
 	}

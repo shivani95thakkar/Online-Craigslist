@@ -67,7 +67,7 @@
   </nav>
 
   	<?php
-    	echo '<h1>hello '.$_SESSION['email_id'].'</h1>';
+    	echo '<h1>Welcome, '.$_SESSION['firstname'].'!</h1>';
 ?>
 
 <div id="product-grid">

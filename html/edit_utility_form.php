@@ -69,7 +69,7 @@
     </nav>
     <?php
       
-      echo '<h1>hello '.$_SESSION['email_id'].'</h1>';
+      // echo '<h1>Welcome, '.$_SESSION['firstname'].'!</h1>';
       $utility_id=$_GET['utility_id'];
        $get_info = "SELECT * FROM utility where utility_id=".$utility_id.";";
        $item_info = mysqli_query($conn, $get_info);

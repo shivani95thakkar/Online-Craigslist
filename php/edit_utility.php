@@ -85,7 +85,7 @@
 
 				    		
 				    		$message = "Item Edited";
-				    		// echo "Redirecting to my products page";
+				    		echo "Redirecting to my products page";
 						    // header("refresh:0;../html/login.html");
 							echo "<script type='text/javascript'>alert('$message');</script>";
 							header("refresh:0;url=../html/myproducts.php");
@@ -112,7 +112,7 @@
 		    }
 		    else{
 		        echo "<script>alert('Please select a file of jpeg type  ')</script>";
-		        header("refresh:0;url=../php/edit_utility_form.php");
+		        header("refresh:0;url=../html/edit_utility_form.php");
 		        // header("refresh:0;url=/OnlinePhotographyContest/uploader.php");
 		    }
 		}
@@ -124,7 +124,7 @@
 
 				    		
 				    		$message = "Item Edited";
-				    		// echo "Redirecting to my products page";
+				    		echo "Redirecting to my products page";
 						    // header("refresh:0;../html/login.html");
 							echo "<script type='text/javascript'>alert('$message');</script>";
 							header("refresh:0;url=../html/myproducts.php");

@@ -188,7 +188,7 @@
 <?php
 //      echo "Category: ".$category;
 //      echo "<br>Search String: ".$searchString;
-      echo '<h1>hello '.$_SESSION['email_id'].'</h1>';
+      echo '<h1>Welcome, '.$_SESSION['firstname'].'!</h1>';
     ?>
 
 <div id = "results">
@@ -229,7 +229,12 @@
       <form method="post" action="../php/manage-wishlist.php?action=add&page=<?php echo $page; ?>&utility_id=<?php echo $row["utility_id"]; ?>">
       <div class="product-image"><img height="100" width="120" src="<?php echo $path["image_path"]; ?>"></div>
       <div><strong><a href="../php/view-product-details.php?page=<?php echo $page; ?>&utility_id=<?php echo $row["utility_id"]; ?>"> <?php echo $row["name"]; ?> </a></strong></div>
-      <div class="product-price"><?php echo $row["category_id"]; ?></div>
+      <div class="product-price">
+        <?php if($row["category_id"] == '1'){
+                  echo "For Sale";
+        }else{
+                  echo "Housing";
+        } ?></div>
       <div class="product-price"><?php echo "$".$row["price"]; ?></div>
       <div><input type="submit" value="Add to wishlist" class="btn btn-success" /></div>
       

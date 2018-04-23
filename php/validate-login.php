@@ -25,7 +25,13 @@
 
 		if(mysqli_num_rows($result) > 0){
 			$row = mysqli_fetch_assoc($admin_result);
-			if($row['isAdmin'] == 1){
+			// $userDetails = mysqli_fetch_assoc($result);
+			
+			if($row['is_deleted'] == 1){
+				$message = "This account has been disabled due to security reasons";
+		    	header("refresh:0;../html/login.html");
+				echo "<script type='text/javascript'>alert('$message');</script>";
+			}else if($row['isAdmin'] == 1){
 				session_start();
 				$_SESSION["email_id"] = $email;
 				$_SESSION["isAdmin"] = 1;
@@ -35,6 +41,7 @@
 			{
 				session_start();
 				$_SESSION["email_id"] = $email;
+				$_SESSION["firstname"] = $row['firstname'];
 				header("Location: ../html/homepage.php");
 			}
 		}

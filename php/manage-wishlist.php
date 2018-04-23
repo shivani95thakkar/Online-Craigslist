@@ -71,7 +71,7 @@
 					$message = "item removed from the cart";
 					echo "<script type='text/javascript'>alert('$message');</script>";
 					// header("Location: ../html/homepage.php");
-					header("Location: ../php/mywishlist.php");
+					header("refresh:0; ../php/mywishlist.php");
 					exit();
 				}
 				else

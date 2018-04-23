@@ -51,7 +51,7 @@
 
 
     <?php
-    	echo '<h1>hello '.$_SESSION['email_id'].'</h1>';
+    	echo '<h1>Welcome, '.$_SESSION['firstname'].'!</h1>';
       echo '<a style="position: absolute;    top: 80px; right: 16px" class="btn btn-success" href ="../php/send_mail.php"> Send Mail </a><br>';
 
       $servername = "localhost";
@@ -71,7 +71,10 @@
       $select_wishlist_items = "SELECT * FROM wishlist WHERE email_id='".$_SESSION['email_id']."' ORDER BY timestamp;";
       $items_set_id = mysqli_query($conn, $select_wishlist_items);
 
+      $count = 0;
+
       while ($item_id = mysqli_fetch_assoc($items_set_id)) {
+        $count = $count + 1;
         # code...
         // echo $item_id['utility_id']."<br>";
 
@@ -91,7 +94,7 @@
             
             <div class="product-price">
             <?php if($item_details['is_deleted'] == '1'){
-                      echo "Deleted";
+                      echo "<div class='badge badge-danger'>Deleted</div>";
             }
             else{
               echo "$".$item_details["price"];
@@ -106,6 +109,12 @@
 
         <?php
 
+      }
+
+
+      if($count == 0)
+      {
+        echo "<h4 class='alert-heading'>Your wishlist is empty!!</h4></div>";
       }
     ?>
 

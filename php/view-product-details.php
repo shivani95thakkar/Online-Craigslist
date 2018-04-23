@@ -71,7 +71,7 @@
 
 
     <?php
-    	echo '<h1>hello '.$_SESSION['email_id'].'</h1>';
+    	// echo '<h1>hello '.$_SESSION['email_id'].'</h1>';
 
     	$get_info = "SELECT * FROM utility where utility_id=".$_GET['utility_id'].";";
         $item_info = mysqli_query($conn, $get_info);
