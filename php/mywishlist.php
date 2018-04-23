@@ -40,7 +40,7 @@
             <a class="nav-link" href="../html/myproducts.php">My Products</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../php/destroysession.php">Logout</a>
+            <a  class="nav-link" href="../php/destroysession.php">Logout</a>
           </li>
         </ul>
       </div>
@@ -52,7 +52,8 @@
 
     <?php
     	echo '<h1>hello '.$_SESSION['email_id'].'</h1>';
-      echo '<a href ="../php/send_mail.php"> Send Mail </a><br>';
+      echo '<a style="position: absolute;    top: 80px; right: 16px" class="btn btn-success" href ="../php/send_mail.php"> Send Mail </a><br>';
+
       $servername = "localhost";
       $username = "root";
       $password = "root";
@@ -67,7 +68,7 @@
           die("Connection failed: " . mysqli_connect_error());
       }
 
-      $select_wishlist_items = "SELECT * FROM wishlist WHERE email_id='".$_SESSION['email_id']."';";
+      $select_wishlist_items = "SELECT * FROM wishlist WHERE email_id='".$_SESSION['email_id']."' ORDER BY timestamp;";
       $items_set_id = mysqli_query($conn, $select_wishlist_items);
 
       while ($item_id = mysqli_fetch_assoc($items_set_id)) {
@@ -86,8 +87,7 @@
         <div class="product-item">
           <form method="post" action="../php/manage-wishlist.php?action=remove&utility_id=<?php echo $item_details["utility_id"]; ?>">
             <div class="product-image"><img height="100" width="120" src="../php/<?php echo $path["image_path"]; ?>"></div>
-            <div><strong><?php echo 
-            $item_details["name"]; ?></strong></div>
+            <div><strong><a href="../php/view-product-details.php?page=1&utility_id=<?php echo $item_id['utility_id']; ?>"> <?php echo $item_details["name"]; ?> </a></strong></div>
             
             <div class="product-price">
             <?php if($item_details['is_deleted'] == '1'){
@@ -97,7 +97,7 @@
               echo "$".$item_details["price"];
             } ?>
             </div>
-            <div><input type="submit" value="Remove from wishlist" class="btnAddAction" /></div>
+            <div><input type="submit" value="Remove" class="btn btn-danger" /></div>
 
             
           

@@ -62,7 +62,7 @@
 				# code...
 				// echo "we will remove from the cart";
 
-				$remove_query = "DELETE FROM wishlist WHERE utility_id = '".$utility_id."';";
+				$remove_query = "DELETE FROM wishlist WHERE email_id = '".$email_id."' and utility_id = '".$utility_id."';";
 				// echo "$remove_query";
 
 				if(mysqli_query($conn, $remove_query))

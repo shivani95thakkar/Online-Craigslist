@@ -1,7 +1,24 @@
+<?php
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+    if(!isset($_SESSION['email_id'])){
+      header("Location: ../html/login.html");
+    }
+    if(!isset($_SESSION['isAdmin'])){
+      header("Location: ../html/login.html");
+    }
+?>
+
 <html>  
 <head lang="en">  
     <meta charset="UTF-8">  
-    <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist\css\bootstrap.css"> <!--css file link in bootstrap folder-->  
+    <!-- <link type="text/css" rel="stylesheet" href="../bootstrap-3.2.0-dist/css/bootstrap.css"> --> <!--css file link in bootstrap folder-->  
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
     <title>View Users</title>  
 </head>  
 <style>  
@@ -16,6 +33,26 @@
 </style>  
   
 <body>  
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">Craigslist</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Admin Panel<span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="../php/destroysession.php">Logout</a>
+          </li>
+
+        </ul>
+      </div>
+  </nav>
   
 <div class="table-scrol">  
     <h1 align="center">All the Users</h1>  
@@ -45,7 +82,7 @@
         $conn;
         $conn = mysqli_connect($host,$user,$password,$database);
         //include("database/db_conection.php");
-        $view_users_query="select * from user where is_deleted=0";//select query for viewing users.  
+        $view_users_query="select * from user where is_deleted=0 and isAdmin = 0";//select query for viewing users.  
         $run=mysqli_query($conn,$view_users_query);//here run the sql query.  
   
         while($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.  

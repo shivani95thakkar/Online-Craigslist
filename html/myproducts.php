@@ -26,10 +26,11 @@
 <head>
 	<title></title>
 	<!--Import Google Icon Font-->
+  <link href="../css/cart.css" type="text/css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
-    <link href="../css/cart.css" type="text/css" rel="stylesheet" />
+    
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -76,7 +77,7 @@
     $start_from = ($page-1) * $limit; 
 
    	
-   	$select_my_items = "SELECT * FROM utility WHERE is_deleted <> '1' AND email_id='".$_SESSION['email_id']."' ORDER BY utility_id LIMIT $start_from, $limit;";
+   	$select_my_items = "SELECT * FROM utility WHERE is_deleted <> '1' AND email_id='".$_SESSION['email_id']."' ORDER BY timestamp DESC LIMIT $start_from, $limit;";
       $items_set_id = mysqli_query($conn, $select_my_items);
 
       while ($item_id = mysqli_fetch_assoc($items_set_id)) {
@@ -92,13 +93,16 @@
         $item_details = mysqli_fetch_assoc($item_info);
         ?>
 
-        <div class="product-item">
+        <!-- <div class="product-item" class="btn btn-outline-primary"> -->
+        <div class="product-item"> <!-- btn btn-outline-secondary"> -->
           <form method="post" action="../php/manage-products.php?action=remove&utility_id=<?php echo $item_details["utility_id"]; ?>">
             <div class="product-image"><img height="100" width="120" src="../php/<?php echo $path["image_path"]; ?>"></div>
             <div><strong><?php echo 
             $item_details["name"]; ?></strong></div>
+            
             <div class="product-price"><?php echo "$".$item_details["price"]; ?></div>
-            <div><input type="submit" value="Remove" class="btnAddAction" /></div>
+            <div><input type="submit" method="get" formaction="../html/edit_utility_form.php?utility_id=<?php echo $item_details["utility_id"]; ?>" value="Edit" class="btn btn-info"/></div>
+            <div><input type="submit" value="Remove" class="btn btn-danger" /></div>
           
           </form>
         </div>

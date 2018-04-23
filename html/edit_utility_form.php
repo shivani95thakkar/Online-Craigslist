@@ -4,7 +4,7 @@
         session_start(); 
     } 
     if(!isset($_SESSION['email_id'])){
-     // header("Location: ../html/login.html");
+     header("Location: ../html/login.html");
     }
 
      $servername = "localhost";
@@ -93,15 +93,15 @@
               <input type="text" class="form-control" id="username" name="username" placeholder="johndoe123">
               <div id="availability"> </div>
           </div> -->
-          <div class="form-group">
-              <label>Utility Id</label>
-              <input type="text" class="form-control" id="utility_id" name="utility_id" value=<?php echo $utility_id;?>>
-              <div id="availability"> </div>
-          </div>
+<!--           <div class="form-group">
+              <label>Utility Id</label> -->
+              <input type="hidden" class="form-control" id="utility_id" name="utility_id" value="<?php echo $utility_id;?>">
+<!--               <div id="availability"> </div>
+          </div> -->
 
           <div class="form-group">
               <label>Utility Name</label>
-              <input type="text" class="form-control" id="name" name="name" value=<?php echo $item_details["name"];?>>
+              <input type="text" class="form-control" id="name" name="name" value="<?php echo $item_details["name"];?>">
               <div id="availability"> </div>
           </div>
           
@@ -128,13 +128,13 @@
 
           <div class="form-group">
               <label>Price</label>
-              <span><input type="text" class="form-control" name="price" value=<?php echo $item_details["price"];?> id="price" required="required">
+              <span><input type="text" class="form-control" name="price" value="<?php echo $item_details["price"];?>" id="price" required="required">
               </span>
           </div>
 
           <div class="form-group">
               <label>Description</label>
-              <span><input type="text" class="form-control" name="description" value=<?php echo $item_details["description"];?> id="description" required="required">
+              <span><input type="text" class="form-control" name="description" value="<?php echo $item_details["description"];?>" id="description" required="required">
               </span>
           </div>
 
@@ -147,22 +147,22 @@
 
           <div class="form-group">
               <label>Street name</label>
-              <input type="text" class="form-control" name="street" value=<?php echo $item_details["street"];?> id="street" required="required">
+              <input type="text" class="form-control" name="street" value="<?php echo $item_details["street"];?>" id="street" required="required">
           </div>
           
           <div class="form-group">
               <label>City</label>
-              <input type="text" class="form-control" name="city" value=<?php echo $item_details["city"];?> id="city" required="required">
+              <input type="text" class="form-control" name="city" value="<?php echo $item_details["city"];?>" id="city" required="required">
           </div>
           
           <div class="form-group">
               <label>State</label>
-              <input type="text" class="form-control" name="state" value=<?php echo $item_details["state"];?> id="state" required="required">
+              <input type="text" class="form-control" name="state" value="<?php echo $item_details["state"];?>" id="state" required="required">
           </div>
 
           <div class="form-group">
               <label>Country</label>
-              <input type="text" class="form-control" name="country" value=<?php echo $item_details["country"];?> id="country" required="required">
+              <input type="text" class="form-control" name="country" value="<?php echo $item_details["country"];?>" id="country" required="required">
           </div>
 
             <br>

@@ -202,14 +202,14 @@
     $start_from = ($page-1) * $limit; 
 
     if($category == 'all'){
-    $query = "SELECT * FROM utility WHERE is_deleted <> '1' AND name LIKE '$searchString' ORDER BY utility_id LIMIT $start_from, $limit;";
+    $query = "SELECT * FROM utility WHERE is_deleted <> '1' AND name LIKE '$searchString' ORDER BY timestamp DESC LIMIT $start_from, $limit;";
     $sql = "SELECT COUNT(*) FROM utility WHERE is_deleted <> '1' AND name LIKE '$searchString';";
   }
   else
   {
     // $temp = "%".$searchString."%";
     // echo "<br>".$temp;
-    $query = "SELECT * FROM utility WHERE is_deleted <> '1' AND category_id=".$category." AND name LIKE '%%$searchString%%' ORDER BY utility_id LIMIT $start_from, $limit;";  
+    $query = "SELECT * FROM utility WHERE is_deleted <> '1' AND category_id=".$category." AND name LIKE '%%$searchString%%' ORDER BY timestamp DESC LIMIT $start_from, $limit;";  
     $sql = "SELECT COUNT(*) FROM utility WHERE is_deleted <> '1' AND category_id=".$category." AND name LIKE '%%$searchString%%';";
   }
 
@@ -223,7 +223,7 @@
     // echo "<pre>";
     // print_r($row);
     // print_r($path);
-    // echo "</pre>";
+        // echo "</pre>";
 ?>
     <div class="product-item">
       <form method="post" action="../php/manage-wishlist.php?action=add&page=<?php echo $page; ?>&utility_id=<?php echo $row["utility_id"]; ?>">
@@ -231,7 +231,7 @@
       <div><strong><a href="../php/view-product-details.php?page=<?php echo $page; ?>&utility_id=<?php echo $row["utility_id"]; ?>"> <?php echo $row["name"]; ?> </a></strong></div>
       <div class="product-price"><?php echo $row["category_id"]; ?></div>
       <div class="product-price"><?php echo "$".$row["price"]; ?></div>
-      <div><input type="submit" value="Add to wishlist" class="btnAddAction" /></div>
+      <div><input type="submit" value="Add to wishlist" class="btn btn-success" /></div>
       
       </form>
     </div>

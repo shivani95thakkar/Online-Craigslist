@@ -10,7 +10,7 @@ $conn = mysqli_connect($host,$user,$password,$database);
 $delete_id=$_GET['del'];
 
 $delete_query="update user set is_deleted=1 WHERE email_id='".$delete_id."'";//delete query
-echo $delete_query."<br>";
+// echo $delete_query."<br>";
 if(mysqli_query($conn,$delete_query))
 {
 	//javascript function to open in the same window

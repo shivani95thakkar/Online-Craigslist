@@ -20,7 +20,7 @@
           die("Connection failed: " . mysqli_connect_error());
       }
 
-	echo "We will add this product to our database";
+	// echo "We will add this product to our database";
 
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -38,7 +38,14 @@
 		$price= $_POST['price'];
 		$description= $_POST['description'];
 
-		$image_name=$_FILES["image"]["name"];
+
+		$getLastId = "SELECT utility_id FROM utility ORDER BY utility_id DESC LIMIT 1";
+		$result = mysqli_query($conn, $getLastId);
+		$row = mysqli_fetch_assoc($result);
+		$last = $row['utility_id'];
+		$next = 1 + (int)$last;
+
+		$image_name=$next.$_FILES["image"]["name"];
 		$type1=$_FILES["image"]["type"];
 		$size1=$_FILES["image"]["size"];
 		$tmp_name1=$_FILES["image"]["tmp_name"];
@@ -83,7 +90,7 @@
 
 				    		
 				    		$message = "Item Added";
-				    		echo "Redirecting to my products page";
+				    		// echo "Redirecting to my products page";
 						    // header("refresh:0;../html/login.html");
 							echo "<script type='text/javascript'>alert('$message');</script>";
 							header("refresh:0;url=../html/myproducts.php");
@@ -106,12 +113,26 @@
 		    }
 		    else{
 		        echo "<script>alert('Please select a file of jpeg type  ')</script>";
+		        header("refresh:0;url=../php/utility.php");
 		        // header("refresh:0;url=/OnlinePhotographyContest/uploader.php");
 		    }
 		}
 		else
 		{
-	        echo "<script>alert('Please select a file')</script>";
+	        // echo "<script>alert('Please select a file')</script>";
+	        if (mysqli_query($conn, $insert_utility)){//} and mysqli_query($conn, $insert_image)){
+
+				    		
+				    		$message = "Item Added";
+				    		// echo "Redirecting to my products page";
+						    // header("refresh:0;../html/login.html");
+							echo "<script type='text/javascript'>alert('$message');</script>";
+							header("refresh:0;url=../html/myproducts.php");
+				    	}
+				    	else
+				    	{
+				    		echo "Error: " ." ".$insert_utility . "<br>" . mysqli_error($conn);
+				    	}
 	        // header("refresh:0;url=/OnlinePhotographyContest/uploader.php");
 		}
 
