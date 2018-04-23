@@ -75,14 +75,14 @@ img {
       -ms-flex-direction: column;
           flex-direction: column; }
 
-.colors {
+/*.colors {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
           flex-grow: 1; }
-
+*/
 .product-title, .price, .sizes, .colors {
-  text-transform: UPPERCASE;
+  /*text-transform: UPPERCASE;*/
   font-weight: bold; }
 
 .checked, .price span {
@@ -113,7 +113,7 @@ img {
   background: #ff9f1a;
   padding: 1.2em 1.5em;
   border: none;
-  text-transform: UPPERCASE;
+  /*text-transform: UPPERCASE;*/
   font-weight: bold;
   color: #fff;
   -webkit-transition: background .3s ease;
@@ -132,6 +132,10 @@ img {
 
 .orange {
   background: #ff9f1a; }
+
+.greens{
+  color:  #85ad00;
+}
 
 .green {
   background: #85ad00; }

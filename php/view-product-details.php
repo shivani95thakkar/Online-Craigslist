@@ -71,7 +71,7 @@
 
 
     <?php
-    	// echo '<h1>hello '.$_SESSION['email_id'].'</h1>';
+    	echo '<h1>hello '.$_SESSION['email_id'].'</h1>';
 
     	$get_info = "SELECT * FROM utility where utility_id=".$_GET['utility_id'].";";
         $item_info = mysqli_query($conn, $get_info);
@@ -122,29 +122,31 @@
             
           </div>
           <div class="details col-md-6">
-            <h3 class="product-title">Product Details:</h3>
+            <h3 class="product-title"><?php echo "".$item_details['name'].""; ?></h3>
             <?php  echo "".$item_details["description"]; ?><br><br>
             
-            <h5 class="colors">current price: 
-              <span ><?php echo "$".$item_details["price"]; ?></span>
+            <h5>Current price: 
+              <span class="greens"><?php echo ""."$".$item_details["price"]; ?></span>
+            </h5>
+
+            <h5>Category:
+              <span ><?php  echo "".$category_details["name"]; ?></span>
             </h5>
             
-            <h5 class="colors">Seller's Name:
+            <h5>Seller's Name:
               <span ><?php echo "".$seller_details["firstname"]." ".$seller_details["lastname"]; ?></span>
             </h5>
            
 
-            <h5 class="colors">Email ID:
+            <h5>Email ID:
               <span ><?php echo "".$email_details["email_id"]; ?></span>
             </h5>
 
-            <h5 class="colors">Address:
+            <h5>Address:
               <span ><?php echo "".$email_details["street"].", ".$email_details["city"].", ".$email_details["state"].", ".$email_details["country"]; ?></span>
             </h5>
 
-            <h5 class="colors">Category:
-              <span ><?php  echo "".$category_details["name"]; ?></span>
-            </h5><br>
+            <br>
             <div class="action">
               <!-- <button class="add-to-cart btn btn-default" type="button">add to cart</button> -->
               <input type="submit" value="Add to wishlist" class="btn btn-success" />
