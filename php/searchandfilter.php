@@ -122,7 +122,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   echo "<div margin-bottom>";
   $pagLink = "<div class='pagination' style ='margin-bottom:20px; margin-left:100px'>";  
   for ($i=1; $i<=$total_pages; $i++) {  
-             $pagLink .= " "."<a class='page-link' href='../html/checkfilter.php?page=".$i."'>".$i."</a>";  
+             $pagLink .= " "."<a class='page-link' href='../html/homepage.php?page=".$i."'>".$i."</a>";  
   };  
   echo $pagLink . "</div>";  
 
