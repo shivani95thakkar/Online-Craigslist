@@ -119,11 +119,9 @@
               </textarea>
           </div>
 
-          <div class="form-group">
-              <label>Availability</label><br>
-              <input type="radio" name="isAvailable" value="1" checked="checked"> Available<br>
-              <input type="radio" name="isAvailable" value="0"> Not Available<br>
-          </div>
+       
+              <input type="hidden" name="isAvailable" value="1"> 
+          
           
 
           <div class="form-group">

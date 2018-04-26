@@ -138,11 +138,9 @@
               </span>
           </div>
 
-          <div class="form-group">
-              <label>Availability</label><br>
-              <input type="radio" name="isAvailable" value="1" <?php echo ($item_details["isAvailable"]==1)?'checked':'' ?>> Available<br>
-              <input type="radio" name="isAvailable" value="0" <?php echo ($item_details["isAvailable"]==0)?'checked':'' ?>> Not Available<br>
-          </div>
+        
+              <input type="hidden" name="isAvailable" value="1"> 
+            
           
 
           <div class="form-group">

@@ -111,8 +111,8 @@
 		    	}
 		    }
 		    else{
-		        echo "<script>alert('Please select a file of jpeg type  ')</script>";
-		        header("refresh:0;url=../html/edit_utility_form.php");
+		        // echo "<script>alert('Please select a file of jpeg type  ')</script>";
+		        header("refresh:0;url=../html/edit_utility_form.php?utility_id=".$utility_id);
 		        // header("refresh:0;url=/OnlinePhotographyContest/uploader.php");
 		    }
 		}
